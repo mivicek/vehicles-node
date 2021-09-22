@@ -7,15 +7,7 @@ var url = require('./dburl');
 const CA =  {
   tlsCAFile: `${__dirname}/ca-certificate.crt`,
 };
-
-// const url = `mongodb+srv://testuser:5cd803o2Ine49K6h@nodemongo-db-16989-c20e1610.mongo.ondigitalocean.com/test-project?authSource=admin&replicaSet=nodemongo-db-16989&tls=true&tlsCAFile=${__dirname}\/ca-certificate.crt`
-
 mongoose.connect(url, {useNewUrlParser: true }); // , useUnifiedTopology: true
-
-// mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }); // useFindAndModify: true  useCreateIndex: true -> mongoose-fuzzy-searching plugin
-
-
-
 var db = mongoose.connection;
 
 //Bind connection to error event (to get notification of connection errors)
@@ -27,7 +19,6 @@ var CarSchema = new Schema({
   model: String,
   year: Number
 });
-
 
 // Compile model from schema
 var Car = mongoose.model('Car', CarSchema, 'vehicle-types');
