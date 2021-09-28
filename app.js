@@ -6,9 +6,6 @@ var logger = require('morgan');
 cors = require('cors');
 bodyParser = require('body-parser');
 
-// var indexRouter = require('./routes/index');
-// var router = express.Router(); 
-
 var app = express();
 
 var apiRoutes = require('./routes/api-routes');

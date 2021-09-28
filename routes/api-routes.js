@@ -51,18 +51,17 @@ router.get('/filter', function (req, res) {
   let make = req.query.make;
   let model = req.query.model;
   let year = req.query.year;
-  
-  if (make.length > 0) {
+
+  if ((make !== undefined) && (make.length > 0)) {
     searchTerm.make = make;
   }
-  if (model.length > 0) {
+  if ((model !== undefined) && (model.length > 0)) {
     searchTerm.model = model;
   }
-  if ((year.length > 0) && (year !== null)) {
+  if ((year !== undefined) && (year.length > 0) && (year !== null)) {
     searchTerm.year = year;
   }
-  
-  
+
   Car.find(searchTerm, function (err, data) {  // fuzzySearch  find
     if (err) {
       return next(err);
@@ -70,10 +69,24 @@ router.get('/filter', function (req, res) {
       res.json(data);
     }
   });
-  })
+})
+
+router.get('/fuzzy-filter/:term', function (req, res) {
+  const searchTerm = req.params.term;
+  Car.fuzzySearch(searchTerm, function (err, data) {  // fuzzySearch  find
+    if (err) {
+      console.error('error: ', err);
+      return next(err);
+    } else {
+      // console.log('data: ', data);
+      res.json(data);
+    }
+  });
+})
 
 router.delete('/delete-car/:id', function (req, res) {    // delete umjesto get
-  Car.findByIdAndRemove(req.params.id, (error, data) => {
+  const id = req.params.id;
+  Car.findByIdAndRemove(id, (error, data) => {
     if (error) {
       return next(error);
     } else {
