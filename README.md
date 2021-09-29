@@ -1,4 +1,7 @@
 # vehicles-node - backend
 
-For backend I used Node.js with Express and Mongoose. 
-For frontend I used Angular framework. As there was no specified design I used Angular Material for out-of-box basic styles and for table and popup confirmation. 
+I used Node.js with Express and Mongoose on backend, and Angular framework on frontend. As there was no specified design I used Angular Material for out-of-box basic styles and for table and popup confirmation. 
+
+There are 2 ways to search the database - exact-search filter and fuzzy filter (using mongoose-fuzzy-searching plugin with mongoose 5.13.9). Results can be be additionally filtered using client-side fiter.
+
+

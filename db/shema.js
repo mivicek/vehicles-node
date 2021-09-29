@@ -28,8 +28,9 @@ CarSchema.plugin(mongoose_fuzzy_searching, { fields: ['make', 'model'] });
 
 // Compile model from schema
 var Car = mongoose.model('Car', CarSchema, 'vehicle-types');
+// // var Car = mongoose.model('Car', CarSchema, 'vehicles-types');
 
-
+/*
 const { each, queue } = require('async');
 const updateFuzzy = async (Model, attrs) => {
   console.log('1');
@@ -56,9 +57,10 @@ const updateFuzzy = async (Model, attrs) => {
    myQueue.empty = function () {};
    myQueue.drain = function () {};
 }
+*/
 
 // samo jednom po fieldu za kreirati indexe
-// updateFuzzy(Car, ['make, 'model']);
+// updateFuzzy(Car, ['make', 'model']);
 
 module.exports = Car;
 
